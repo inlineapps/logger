@@ -1,4 +1,4 @@
-Custom bunyan logger form our Node.js project.
+Custom bunyan logger for our Node.js project.
 
 ## Install
 
