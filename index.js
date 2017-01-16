@@ -17,7 +17,7 @@ module.exports = (pkg, serializers) => bunyan.createLogger({
     ? []
     : [
       {
-        level,
+        level: 'error',
         stream: new BunyanSlack({
           webhook_url,
           channel,
