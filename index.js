@@ -49,12 +49,12 @@ function getDefaultStreams() {
   ];
 }
 
-module.exports = (pkg, serializers) => bunyan.createLogger({
+module.exports = (pkg, serializers, streams) => bunyan.createLogger({
   name: pkg.name,
   version: pkg.version,
   src: true,
   serializers: createSerializers(serializers),
-  streams: getTestStreams()
+  streams: (getTestStreams()
     || getDevelopmentStreams()
-    || getDefaultStreams()
+    || getDefaultStreams()).concat(streams || [])
 });
