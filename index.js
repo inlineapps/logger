@@ -30,7 +30,7 @@ function getDevelopmentStreams() {
 function getDefaultStreams() {
   return [
     {
-      level,
+      level: 'error',
       stream: new BunyanSlack({
         webhook_url,
         channel,
