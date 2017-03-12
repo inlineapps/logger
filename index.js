@@ -28,16 +28,7 @@ function getDevelopmentStreams() {
 }
 
 function getDefaultStreams() {
-  return [
-    {
-      level: 'error',
-      stream: new BunyanSlack({
-        webhook_url,
-        channel,
-        username,
-        customFormatter: formatter
-      })
-    },
+  const streams = [
     {
       level,
       stream: process.stdout
@@ -47,6 +38,18 @@ function getDefaultStreams() {
       stream: process.stderr
     }
   ];
+  if (webhook_url) {
+    streams.push({
+      level: 'error',
+      stream: new BunyanSlack({
+        webhook_url,
+        channel,
+        username,
+        customFormatter: formatter
+      })
+    });
+  }
+  return streams;
 }
 
 module.exports = (pkg, serializers, streams) => bunyan.createLogger({
