@@ -13,7 +13,7 @@ function getTestStreams() {
 }
 
 function getDevelopmentStreams() {
-  return process.env.NODE_ENV === 'developemnt'
+  return process.env.NODE_ENV === 'developement'
     ? [
       {
         level,
