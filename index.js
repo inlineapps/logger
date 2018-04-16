@@ -4,6 +4,7 @@ const createSerializers = require('./serializers');
 const formatter = require('./formatter');
 
 const level = process.env.LOG_LEVEL || 'info';
+const src = process.env.LOG_SRC || false;
 const webhook_url = process.env.SLACK_WEBHOOK_URL;
 const channel = process.env.SLACK_CHANNEL;
 const username = process.env.SLACK_USERNAME;
@@ -55,7 +56,7 @@ function getDefaultStreams() {
 module.exports = (pkg, serializers, streams) => bunyan.createLogger({
   name: pkg.name,
   version: pkg.version,
-  src: true,
+  src,
   serializers: createSerializers(serializers),
   streams: (getTestStreams()
     || getDevelopmentStreams()
