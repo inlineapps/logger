@@ -14,7 +14,7 @@ function getTestStreams() {
 }
 
 function getDevelopmentStreams() {
-  return process.env.NODE_ENV === 'developement'
+  return process.env.NODE_ENV === 'development'
     ? [
       {
         level,
